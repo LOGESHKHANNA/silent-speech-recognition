@@ -1,109 +1,239 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LifeTwin AI is a simple personal dashboard for understanding daily routines and finding useful next steps." />
-    <title>LifeTwin AI | Your Day, Seen Together</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Silent Speech Recognition: a Project Based Learning demonstration by the Department of Computer Science and Engineering, Chennai Institute of Technology.">
+    <meta name="theme-color" content="#07111f">
+    <title>Silent Speech Recognition | PBL Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div class="app" id="top">
-      <header class="topbar">
-        <a class="brand" href="#top" aria-label="LifeTwin AI home">
-          <span class="brand-mark">LT</span>
-          <span class="brand-text"><strong>LifeTwin</strong><small>your day, together</small></span>
+    <div class="site-shell" id="top">
+      <header class="site-header">
+        <a class="brand" href="#overview" aria-label="Silent Speech Recognition home">
+          <span class="brand-mark" aria-hidden="true"><i></i><b></b><em></em></span>
+          <span class="brand-copy"><strong>SSR<span>/</span>26</strong><small>Visual speech lab</small></span>
         </a>
         <nav class="desktop-nav" aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <a href="#twin">My twin</a>
-          <a href="#insights">Insights</a>
-          <a href="#how">How it works</a>
+          <a href="#overview">Overview</a>
+          <a href="#demo">Live lab</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#results">Results</a>
+          <a href="#team">Team</a>
         </nav>
-        <div class="top-actions">
-          <span class="local-badge"><i></i> Local demo</span>
-          <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span><b class="sr-only">Open navigation</b></button>
+        <div class="header-actions">
+          <span class="header-status"><i></i> local prototype</span>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+            <span class="theme-icon" aria-hidden="true">O</span><span class="theme-label">Light mode</span>
+          </button>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+            <span></span><span></span><span></span><b class="sr-only">Open navigation</b>
+          </button>
         </div>
       </header>
       <nav class="mobile-nav" id="mobile-nav" hidden aria-label="Mobile navigation">
-        <a href="#home">Home</a><a href="#twin">My twin</a><a href="#insights">Insights</a><a href="#how">How it works</a>
+        <a href="#overview">Overview</a>
+        <a href="#demo">Live lab</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#results">Results</a>
+        <a href="#team">Team</a>
       </nav>
 
       <main>
-        <section class="hero page-width" id="home">
-          <div class="hero-copy reveal">
-            <span class="eyebrow">A SMALLER, CLEARER VIEW OF YOUR DAY</span>
-            <h1>Your day is more than one number.</h1>
-            <p>LifeTwin brings your sleep, movement, study routine and diet into one simple view, so you can notice patterns and decide what to try next.</p>
-            <div class="hero-actions"><a class="button button-primary" href="#twin">Build my twin <span>→</span></a><a class="button button-light" href="#how">How it works</a></div>
-            <div class="hero-proof"><span class="proof-icon">✦</span><p><strong>Made for real routines.</strong> A student-built concept for turning scattered daily details into a useful personal check-in.</p></div>
+        <section class="hero section-wrap" id="overview">
+          <div class="hero-grid">
+            <div class="hero-copy" data-reveal>
+              <div class="eyebrow"><span></span>PBL / MACHINE LEARNING / OCT 2026</div>
+              <h1>Silent speech,<br><span>made visible.</span></h1>
+              <p class="hero-lede">A vision-based approach to recognize selected speech classes from visible lip and facial movements, without relying on an audible speech signal.</p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#demo">Open the live lab <span>-></span></a>
+                <a class="button button-ghost" href="#architecture">Trace the pipeline <span>+</span></a>
+              </div>
+              <div class="hero-note"><span class="note-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span><p><strong>Visual input only.</strong> The project focuses on video frames, mouth-region preprocessing and sequence learning.</p></div>
+            </div>
+            <div class="hero-visual" data-reveal data-delay="1">
+              <div class="visual-grid"></div>
+              <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+              <div class="hero-console">
+                <div class="console-top"><span><i></i> RESEARCH CONSOLE</span><b>FIGURE 4.1</b></div>
+                <div class="console-screen">
+                  <div class="screen-label label-left">FACE / LIP LANDMARKS</div>
+                  <div class="screen-label label-right">VISUAL SIGNAL</div>
+                  <svg class="face-wireframe" viewBox="0 0 520 390" role="img" aria-label="Abstract face and lip landmark visualization">
+                    <defs>
+                      <linearGradient id="faceStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#73e7f4" /><stop offset="1" stop-color="#b8f36a" /></linearGradient>
+                      <filter id="softGlow"><feGaussianBlur stdDeviation="4" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+                    </defs>
+                    <path class="face-line faint" d="M260 42c-93 0-151 64-151 151 0 106 56 157 151 157s151-51 151-157C411 106 353 42 260 42Z" />
+                    <path class="face-line" d="M178 132c23-23 55-26 80-7M262 125c26-19 57-16 80 7" />
+                    <path class="face-line faint" d="M212 164c-8 29-13 53-12 76 1 17 15 26 31 28M308 164c8 29 13 53 12 76-1 17-15 26-31 28" />
+                    <path class="face-line" d="M196 249c37 22 90 22 128 0" />
+                    <path class="lip-line" d="M193 278c22-19 39-23 67-5 27-18 45-14 67 5-28 7-51 9-67 9s-39-2-67-9Z" />
+                    <path class="lip-line faint" d="M204 279c25 7 57 8 112 0M219 286c23 14 57 14 82 0" />
+                    <g class="landmark-dots" filter="url(#softGlow)">
+                      <circle cx="178" cy="132" r="3" /><circle cx="260" cy="125" r="3" /><circle cx="340" cy="132" r="3" />
+                      <circle cx="193" cy="278" r="4" /><circle cx="227" cy="270" r="3" /><circle cx="260" cy="273" r="4" /><circle cx="293" cy="270" r="3" /><circle cx="327" cy="278" r="4" />
+                      <circle cx="260" cy="282" r="3" />
+                    </g>
+                    <path class="scan-path" d="M96 70H424" />
+                  </svg>
+                  <div class="landmark-callout callout-one"><b></b><span>face mesh</span></div>
+                  <div class="landmark-callout callout-two"><b></b><span>mouth ROI</span></div>
+                  <div class="screen-bottom"><span>STREAM / AWAITING CAMERA</span><strong>NO AUDIO</strong></div>
+                </div>
+                <div class="console-bottom"><span>PROPOSED PIPELINE</span><b>CNN <i>-></i> LSTM</b></div>
+              </div>
+              <div class="hero-float float-top"><span class="mini-icon">01</span><div><small>INPUT</small><strong>video frames</strong></div></div>
+              <div class="hero-float float-bottom"><span class="mini-icon lime">02</span><div><small>OUTPUT</small><strong>speech class</strong></div><i class="float-arrow">-></i></div>
+            </div>
           </div>
-          <div class="hero-card reveal delay-1">
-            <div class="hero-card-top"><span>MY DAILY TWIN</span><b>01</b></div>
-            <div class="hero-profile"><div class="avatar">SK</div><div><strong>Sample day</strong><small>updated just now</small></div><span class="online-dot"></span></div>
-            <div class="hero-ring"><div class="ring"><div><strong>4</strong><small>signals</small></div></div><div><span class="card-caption">A DAY IN CONTEXT</span><p>Sleep, movement, learning and food are easier to understand when seen together.</p></div></div>
-            <div class="hero-bars"><div><span>Sleep</span><i><b style="width:72%"></b></i></div><div><span>Movement</span><i><b class="green" style="width:48%"></b></i></div><div><span>Study</span><i><b class="rust" style="width:58%"></b></i></div></div>
-            <div class="hero-card-bottom"><span>example profile</span><strong>View insights →</strong></div>
+          <div class="hero-index" data-reveal>
+            <div><span class="index-number">01</span><strong>Visual frames</strong><small>primary input</small></div>
+            <div><span class="index-number">02</span><strong>Face + lip landmarks</strong><small>computer vision</small></div>
+            <div><span class="index-number">03</span><strong>CNN-LSTM</strong><small>spatiotemporal model</small></div>
+            <div><span class="index-number">04</span><strong>Speech class</strong><small>model output</small></div>
+            <span class="hero-index-tail">REPORT STATUS <b>METRICS PENDING</b></span>
           </div>
         </section>
 
-        <section class="simple-facts page-width reveal"><div><b>Sleep</b><span>how you rest</span></div><div><b>Movement</b><span>how you recharge</span></div><div><b>Study</b><span>how you focus</span></div><div><b>Diet</b><span>how you fuel</span></div><div class="fact-end"><span>One gentle check-in</span><b>→</b></div></section>
+        <section class="question-section section-wrap" id="about">
+          <div class="section-heading split-heading" data-reveal>
+            <div><div class="section-kicker">01 / THE PBL QUESTION</div><h2>Can a machine read<br><span>what is not heard?</span></h2></div>
+            <p>The project asks whether a machine learning model can recognize a limited set of spoken words or phrases from visible lip and facial movements without using an audible speech signal.</p>
+          </div>
+          <div class="question-grid">
+            <article class="statement-card large-card" data-reveal>
+              <span class="card-index">01</span><div class="statement-mark">//</div>
+              <h3>Speech can be a visual sequence.</h3>
+              <p>Unlike conventional automatic speech recognition, the input here is visual rather than an audio waveform. This makes the problem relevant when audio is unavailable, noisy, privacy-sensitive or intentionally suppressed.</p>
+              <div class="card-foot"><span>BACKGROUND</span><i></i><b>VISUAL / TEMPORAL</b></div>
+            </article>
+            <article class="statement-card" data-reveal data-delay="1">
+              <span class="card-index">02</span><div class="card-icon icon-eye" aria-hidden="true"><i></i></div>
+              <h3>See the mouth region.</h3>
+              <p>Video frames are processed to identify the face and isolate the mouth region of interest.</p>
+              <div class="card-foot"><span>MODULE</span><i></i><b>ROI EXTRACTION</b></div>
+            </article>
+            <article class="statement-card" data-reveal data-delay="2">
+              <span class="card-index">03</span><div class="card-icon icon-wave" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h3>Learn movement over time.</h3>
+              <p>A CNN learns spatial patterns while an LSTM models the sequence of lip movements.</p>
+              <div class="card-foot"><span>MODEL</span><i></i><b>CNN + LSTM</b></div>
+            </article>
+          </div>
+        </section>
 
-        <section class="twin-section" id="twin">
-          <div class="page-width">
-            <div class="section-heading reveal"><div><span class="section-label">01 / MY TWIN</span><h2>Start with<br /><em>today.</em></h2></div><p>Add a few details about your day. LifeTwin turns them into a calm, easy-to-read snapshot. Try the example profile or enter your own values.</p></div>
-            <div class="demo-note reveal"><span>i</span><p><strong>Example mode:</strong> this page creates an instant browser preview so you can explore the product without an account or connection. It is not medical advice.</p></div>
-            <div class="twin-layout reveal">
-              <section class="form-card">
-                <div class="form-title"><span class="number">01</span><div><small>YOUR CHECK-IN</small><h3>Tell us about today</h3></div></div>
-                <form id="profile-form" novalidate>
-                  <label for="profile-name">Your name <small>optional</small></label>
-                  <input id="profile-name" type="text" value="Sample student" placeholder="e.g. Alex" />
-                  <div class="two-fields"><div><label for="sleep-hours">Sleep hours <small>0–24</small></label><input id="sleep-hours" type="number" min="0" max="24" step="0.1" value="7.2" required /></div><div><label for="activity-minutes">Movement minutes <small>today</small></label><input id="activity-minutes" type="number" min="0" max="1440" step="1" value="45" required /></div></div>
-                  <div class="two-fields"><div><label for="study-hours">Study hours <small>today</small></label><input id="study-hours" type="number" min="0" max="24" step="0.1" value="3.5" required /></div><div><label for="diet-type">Food routine <small>choose one</small></label><select id="diet-type"><option>Balanced</option><option>Vegetarian</option><option>Mixed</option><option>Other</option></select></div></div>
-                  <p class="error" id="form-error" role="alert"></p>
-                  <button class="button button-primary wide" type="submit">See my twin <span>→</span></button>
-                </form>
-                <button class="reset-link" id="reset-profile" type="button">Reset example</button>
-              </section>
-              <section class="twin-result" id="result-card">
-                <div class="result-heading"><div class="form-title"><span class="number rust-number">02</span><div><small>YOUR SNAPSHOT</small><h3 id="result-title">A clear starting point</h3></div></div><span class="result-label" id="result-label">EXAMPLE</span></div>
-                <div class="result-person"><div class="avatar small-avatar" id="profile-avatar">SS</div><div><strong id="result-name">Sample student</strong><span id="result-inputs">7.2 hrs sleep · 45 min movement · 3.5 hrs study</span></div><b><i></i> ready</b></div>
-                <div class="outcomes">
-                  <button class="outcome active blue" type="button" data-outcome="productivity"><span>Productivity</span><strong id="productivity-value">High</strong><small>example view</small></button>
-                  <button class="outcome rust" type="button" data-outcome="health"><span>Health risk</span><strong id="health-value">Low</strong><small>example view</small></button>
-                  <button class="outcome green" type="button" data-outcome="learning"><span>Learning</span><strong id="learning-value">Medium</strong><small>example view</small></button>
-                  <button class="outcome purple" type="button" data-outcome="stress"><span>Stress level</span><strong id="stress-value">Moderate</strong><small>example view</small></button>
+        <section class="demo-section" id="demo">
+          <div class="section-wrap">
+            <div class="section-heading split-heading" data-reveal>
+              <div><div class="section-kicker">02 / INTERACTIVE LAB</div><h2>Run the visual<br><span>pipeline.</span></h2></div>
+              <p>Use your camera or upload a video to inspect face and lip landmarks, isolate the mouth ROI and build a short frame sequence. The prediction slot stays honest until trained CNN-LSTM weights and the selected vocabulary are connected.</p>
+            </div>
+            <div class="demo-notice" data-reveal><span class="notice-icon">i</span><p><strong>Browser demo:</strong> camera processing is local to this page. Audio is not used. MediaPipe is loaded when the lab is started; OpenCV.js is requested for ROI preprocessing when available.</p><span class="notice-tag">LOCAL ONLY</span></div>
+            <div class="demo-layout" data-reveal>
+              <section class="demo-panel source-panel">
+                <div class="panel-header"><div><span class="panel-kicker">INPUT / 01</span><h3>Capture a sequence</h3></div><div class="stage-status" id="stage-status" data-state="idle" aria-live="polite"><i></i><span id="stage-status-text">ready</span></div></div>
+                <div class="mode-tabs" role="tablist" aria-label="Input source">
+                  <button class="mode-tab is-active" id="live-tab" type="button" role="tab" aria-selected="true" aria-controls="live-source" data-mode="live"><span class="tab-dot"></span>Live camera</button>
+                  <button class="mode-tab" id="upload-tab" type="button" role="tab" aria-selected="false" aria-controls="upload-source" data-mode="upload"><span class="tab-upload-icon">+</span>Upload video</button>
                 </div>
-                <div class="selected-outcome" id="selected-outcome"><span>ABOUT THIS VIEW</span><p>The example profile gives a balanced starting picture. Select an outcome to see what that part of the twin means.</p></div>
+                <div class="source-view" id="live-source" role="tabpanel" aria-labelledby="live-tab">
+                  <div class="video-stage" id="live-stage">
+                    <video id="live-video" muted playsinline></video><canvas id="live-overlay"></canvas>
+                    <div class="stage-empty" id="live-empty"><div class="camera-glyph" aria-hidden="true"><i></i></div><strong>Camera is off</strong><span>Start a local camera stream to inspect lip movement.</span></div>
+                    <div class="stage-corner corner-tl"></div><div class="stage-corner corner-tr"></div><div class="stage-corner corner-bl"></div><div class="stage-corner corner-br"></div>
+                    <div class="stage-caption"><span id="live-caption">WAITING FOR INPUT</span><b>CAMERA / LOCAL</b></div>
+                  </div>
+                  <div class="source-stats"><div><span>Landmarks</span><strong id="landmark-value">waiting</strong></div><div><span>Mouth ROI</span><strong id="roi-value">waiting</strong></div><div><span>Frame sequence</span><strong id="sequence-value">0 captured</strong></div></div>
+                  <div class="source-actions"><button class="button button-primary" id="start-camera" type="button">Enable camera <span>-></span></button><button class="button button-danger" id="stop-camera" type="button" hidden>Stop camera <span>||</span></button><span class="action-hint" id="camera-hint">Camera permission is required.</span></div>
+                </div>
+                <div class="source-view" id="upload-source" role="tabpanel" aria-labelledby="upload-tab" hidden>
+                  <label class="upload-zone" id="upload-zone"><input id="video-upload" type="file" accept="video/*"><span class="upload-symbol">+</span><strong>Drop a video here</strong><span>or choose a local MP4, WebM or MOV file</span><small>No file is uploaded by this page.</small></label>
+                  <div class="upload-preview" id="upload-preview" hidden><div class="video-stage upload-stage"><video id="upload-video" muted playsinline controls></video><canvas id="upload-overlay"></canvas><div class="stage-corner corner-tl"></div><div class="stage-corner corner-tr"></div><div class="stage-corner corner-bl"></div><div class="stage-corner corner-br"></div><div class="stage-caption"><span id="upload-caption">VIDEO READY</span><b id="upload-duration">--</b></div></div><div class="file-meta"><div><span>Selected file</span><strong id="file-name">--</strong></div><div><span>Format / size</span><strong id="file-details">--</strong></div></div><div class="source-actions"><button class="button button-primary" id="analyze-upload" type="button">Analyze sequence <span>-></span></button><button class="button button-quiet" id="remove-upload" type="button">Remove</button></div></div>
+                  <p class="upload-error" id="upload-error" role="alert"></p>
+                </div>
+              </section>
+
+              <section class="demo-panel prediction-panel">
+                <div class="panel-header"><div><span class="panel-kicker">OUTPUT / 02</span><h3>Recognition readout</h3></div><span class="model-chip"><i></i> CNN-LSTM</span></div>
+                 <div class="prediction-readout"><div class="readout-top"><span>Predicted word / class</span><span class="readout-pulse"><i></i> waiting</span></div><strong id="prediction-value" aria-live="polite">Awaiting sequence</strong><div class="confidence-row"><span>Confidence</span><b id="confidence-value">--</b></div><p id="prediction-note">The supplied report defines the CNN-LSTM architecture but does not include trained weights, selected classes or measured confidence values.</p></div>
+                <div class="inference-steps"><div class="inference-step is-ready"><span>01</span><div><strong>Face + lip detection</strong><small id="inference-detection">Waiting for input</small></div><i>+</i></div><div class="inference-step"><span>02</span><div><strong>Mouth-region preprocessing</strong><small id="inference-roi">ROI not captured</small></div><i>+</i></div><div class="inference-step"><span>03</span><div><strong>Sequence classification</strong><small id="inference-model">CNN-LSTM weights pending</small></div><i>+</i></div></div>
+                 <div class="prediction-foot"><span>MODEL SOURCE</span><strong>Report architecture / proposed</strong><button class="text-button" id="clear-session" type="button">Clear session <span>-></span></button></div>
               </section>
             </div>
-            <div class="daily-detail reveal"><section class="signal-card"><div class="small-heading"><span class="number blue-number">03</span><div><small>DAILY SIGNALS</small><h3>Your inputs at a glance</h3></div></div><div class="bars"><div><span>Sleep</span><i><b id="sleep-bar" style="width:72%"></b></i><strong id="sleep-value">7.2</strong></div><div><span>Movement</span><i><b class="green" id="activity-bar" style="width:48%"></b></i><strong id="activity-value">45</strong></div><div><span>Study</span><i><b class="rust" id="study-bar" style="width:58%"></b></i><strong id="study-value">3.5</strong></div></div><small class="chart-note">A simple comparison scale for this demo, not a health score.</small></section><section class="focus-card"><div class="small-heading"><span class="number green-number">04</span><div><small>NEXT SMALL STEP</small><h3>Keep it manageable</h3></div></div><p id="focus-copy">Use this snapshot as a starting point. Protect the routines that are already helping and choose one small change to try next.</p><div class="focus-line"><span id="focus-label">TODAY'S FOCUS</span><strong id="focus-value">Keep your routine visible</strong></div></section></div>
+            <canvas id="roi-buffer" width="96" height="96" aria-hidden="true"></canvas>
           </div>
         </section>
 
-        <section class="insights-section page-width" id="insights">
-          <div class="section-heading reveal"><div><span class="section-label">02 / INSIGHTS</span><h2>Small patterns<br /><em>become easier to see.</em></h2></div><p>There is no single perfect day. The point is to make the relationship between your routines easier to notice, then choose a useful next step.</p></div>
-          <div class="insight-grid reveal"><article><span class="insight-icon blue-icon">↗</span><h3>Productivity</h3><p>See how your study, sleep and activity context comes together around the work you want to finish.</p><a href="#twin">Check today →</a></article><article><span class="insight-icon rust-icon">◌</span><h3>Health risk</h3><p>Use the view as an indicative signal for everyday decisions, never as a diagnosis or clinical answer.</p><a href="#twin">Review signals →</a></article><article><span class="insight-icon green-icon">✦</span><h3>Learning efficiency</h3><p>Notice how your learning routine sits beside the rest of your day instead of living in a separate place.</p><a href="#twin">View learning →</a></article><article><span class="insight-icon purple-icon">~</span><h3>Stress level</h3><p>Make space for reflection by looking at patterns across your routine, not one isolated moment.</p><a href="#twin">Open snapshot →</a></article></div>
-          <div class="recommendation-panel reveal"><div><span class="section-label">A KINDER KIND OF RECOMMENDATION</span><h3>One useful suggestion<br /><em>is enough for today.</em></h3></div><div class="recommendation-flow"><div><b>01</b><span>Your signals</span></div><i>→</i><div><b>02</b><span>Your pattern</span></div><i>→</i><div><b>03</b><span>Your next step</span></div></div></div>
+        <section class="architecture-section section-wrap" id="architecture">
+          <div class="section-heading split-heading" data-reveal><div><div class="section-kicker">03 / SYSTEM ARCHITECTURE</div><h2>From video<br><span>to class.</span></h2></div><p>Figure 4.1 in the report describes an end-to-end workflow: input frames become a mouth-region sequence, then spatial and temporal features are mapped to the selected vocabulary.</p></div>
+          <div class="architecture-flow" data-reveal>
+            <article class="flow-node node-cyan"><span class="flow-number">01</span><div class="flow-icon icon-video"></div><strong>Video input</strong><small>camera / file</small></article><div class="flow-connector"><i></i><span>frames</span></div>
+            <article class="flow-node node-blue"><span class="flow-number">02</span><div class="flow-icon icon-face"></div><strong>Face / lip detection</strong><small>landmarks</small></article><div class="flow-connector"><i></i><span>mesh</span></div>
+            <article class="flow-node node-lime"><span class="flow-number">03</span><div class="flow-icon icon-roi"></div><strong>ROI extraction</strong><small>mouth region</small></article><div class="flow-connector"><i></i><span>crop</span></div>
+            <article class="flow-node node-amber"><span class="flow-number">04</span><div class="flow-icon icon-process"></div><strong>Preprocessing</strong><small>resize / normalize</small></article><div class="flow-connector"><i></i><span>features</span></div>
+            <article class="flow-node node-violet"><span class="flow-number">05</span><div class="flow-icon icon-model"></div><strong>CNN-LSTM</strong><small>spatial + temporal</small></article><div class="flow-connector"><i></i><span>classify</span></div>
+            <article class="flow-node node-coral"><span class="flow-number">06</span><div class="flow-icon icon-output"></div><strong>Speech class</strong><small>word output</small></article>
+          </div>
+          <div class="architecture-note" data-reveal><span class="note-line"></span><p><strong>Why CNN-LSTM?</strong> The report frames silent speech as both spatial and temporal: lip shape matters, and the order and duration of movement also carry information.</p></div>
         </section>
 
-        <section class="how-section" id="how">
-          <div class="page-width">
-            <div class="section-heading reveal"><div><span class="section-label">03 / HOW IT WORKS</span><h2>A simple path from<br /><em>data to direction.</em></h2></div><p>LifeTwin keeps the experience simple on purpose. You add the context, look at the combined view, and decide what feels useful.</p></div>
-            <div class="steps reveal"><article><span>01</span><i class="step-dash"></i><h3>Add your day</h3><p>Enter a few signals about sleep, movement, study and food.</p></article><article><span>02</span><i class="step-dash"></i><h3>See the whole picture</h3><p>Your information becomes one readable personal snapshot.</p></article><article><span>03</span><i class="step-dash"></i><h3>Notice a pattern</h3><p>Look at the four views together instead of judging one number.</p></article><article><span>04</span><i class="step-dash"></i><h3>Choose one next step</h3><p>Start small and return to your twin when the day changes.</p></article></div>
-            <div class="context-map reveal"><div class="context-source"><span>YOUR DAY</span><b>Sleep</b><b>Movement</b><b>Study</b><b>Food</b></div><div class="map-lines"><i></i><i></i><i></i><i></i></div><div class="context-core"><span>ONE TWIN</span><strong>LifeTwin</strong><small>your context, together</small></div><div class="map-lines right"><i></i><i></i><i></i><i></i></div><div class="context-source output"><span>YOUR VIEW</span><b>Productivity</b><b>Health risk</b><b>Learning</b><b>Stress</b></div></div>
+        <section class="method-section" id="method">
+          <div class="section-wrap">
+            <div class="section-heading split-heading" data-reveal><div><div class="section-kicker">04 / METHOD STACK</div><h2>Built from<br><span>known parts.</span></h2></div><p>The project combines computer vision, sequence modeling and machine learning in a single workflow. These are the tools and concepts identified in the report.</p></div>
+            <div class="tech-grid" data-reveal>
+              <article class="tech-card tech-python"><div class="tech-symbol">PY</div><div><strong>Python</strong><small>programming language</small></div><span class="tech-line"></span></article>
+              <article class="tech-card tech-opencv"><div class="tech-symbol">CV</div><div><strong>OpenCV</strong><small>frame processing</small></div><span class="tech-line"></span></article>
+              <article class="tech-card tech-mediapipe"><div class="tech-symbol">MP</div><div><strong>MediaPipe</strong><small>face / lip landmarks</small></div><span class="tech-line"></span></article>
+              <article class="tech-card tech-cnn"><div class="tech-symbol">C</div><div><strong>CNN</strong><small>spatial features</small></div><span class="tech-line"></span></article>
+              <article class="tech-card tech-lstm"><div class="tech-symbol">L</div><div><strong>LSTM</strong><small>temporal patterns</small></div><span class="tech-line"></span></article>
+              <article class="tech-card tech-more"><div class="tech-symbol">+</div><div><strong>NumPy / pandas</strong><small>data workflow</small></div><span class="tech-line"></span></article>
+            </div>
+            <div class="stack-foot" data-reveal><span>ALSO NAMED IN REPORT</span><b>TensorFlow / Keras or PyTorch</b><b>scikit-learn</b><b>Matplotlib</b><b>Google Colab / Jupyter / VS Code</b></div>
           </div>
         </section>
 
-        <section class="about-section page-width" id="about">
-          <div class="about-card reveal"><div><span class="section-label">A NOTE FROM THE BUILD</span><h2>Built to make<br /><em>busy days clearer.</em></h2></div><div><p>LifeTwin is a student-built product idea for people who collect lots of daily information but rarely see it in one place. It keeps the first experience focused: understand the day, notice the context, choose the next step.</p><p class="quiet-note">LifeTwin does not provide medical diagnosis or clinical advice. This demo is for everyday reflection.</p></div></div>
+        <section class="results-section section-wrap" id="results">
+          <div class="section-heading split-heading" data-reveal><div><div class="section-kicker">05 / RESULTS &amp; DISCUSSION</div><h2>Measure it<br><span>when tested.</span></h2></div><p>The supplied report defines the evaluation metrics but does not provide measured experimental values. This page keeps every result as a placeholder until the team inserts actual held-out test results.</p></div>
+          <div class="results-banner" data-reveal><div class="results-banner-icon">!</div><div><strong>Experimental results not reported yet</strong><p>Accuracy, precision, recall and F1-score are intentionally shown as unavailable rather than estimated.</p></div><span>DATA STATUS / OPEN</span></div>
+          <div class="metric-grid" data-reveal>
+            <article class="metric-card"><span>ACCURACY</span><strong>--</strong><small>measured test value</small><i class="metric-bar"></i></article>
+            <article class="metric-card metric-blue"><span>PRECISION</span><strong>--</strong><small>measured test value</small><i class="metric-bar"></i></article>
+            <article class="metric-card metric-lime"><span>RECALL</span><strong>--</strong><small>measured test value</small><i class="metric-bar"></i></article>
+            <article class="metric-card metric-violet"><span>F1-SCORE</span><strong>--</strong><small>measured test value</small><i class="metric-bar"></i></article>
+          </div>
+          <div class="results-table-wrap" data-reveal><table class="results-table"><caption>Results across iterations / Table 6.1 placeholder</caption><thead><tr><th scope="col">Version</th><th scope="col">Accuracy</th><th scope="col">Precision</th><th scope="col">Recall</th><th scope="col">F1-score</th></tr></thead><tbody><tr><th scope="row">Iteration 1 / baseline</th><td>Not reported</td><td>Not reported</td><td>Not reported</td><td>Not reported</td></tr><tr><th scope="row">Iteration 2 / refinement</th><td>Not reported</td><td>Not reported</td><td>Not reported</td><td>Not reported</td></tr><tr class="final-row"><th scope="row">Final approach / CNN-LSTM</th><td>Not reported</td><td>Not reported</td><td>Not reported</td><td>Not reported</td></tr></tbody></table></div>
+          <div class="results-discussion" data-reveal><div><span class="section-kicker">WHAT TO DISCUSS AFTER TESTING</span><h3>Aggregate metrics are only one view.</h3></div><p>The report notes that errors may come from visually similar words, video quality, lighting, head pose and speaker variation. Comparing the baseline with the refined CNN-LSTM approach should show whether temporal modeling and improved preprocessing provide a measurable benefit.</p></div>
+        </section>
+
+        <section class="scope-section" id="scope">
+          <div class="section-wrap scope-grid">
+            <article class="scope-card limitations" data-reveal><div class="scope-top"><span class="section-kicker">06 / LIMITATIONS</span><span class="scope-symbol">/ /</span></div><h2>Know the<br><span>boundary.</span></h2><ul><li>Selected vocabulary and available visual-speech dataset limit the task.</li><li>Performance can vary with speaker identity, head pose, illumination and camera quality.</li><li>Occlusion, facial appearance and visually similar words can affect recognition.</li><li>Real-time deployment may require model compression and efficient frame processing.</li></ul></article>
+            <article class="scope-card future" data-reveal data-delay="1"><div class="scope-top"><span class="section-kicker">07 / FUTURE SCOPE</span><span class="scope-symbol">++</span></div><h2>Keep the<br><span>research moving.</span></h2><ul><li>Scale to a larger and more diverse multi-speaker dataset.</li><li>Extend recognition from isolated words to continuous silent speech.</li><li>Explore Transformer, 3D-CNN and hybrid architectures.</li><li>Improve robustness across lighting, camera angles and speakers.</li><li>Develop a real-time mobile or web-based demonstration.</li></ul></article>
+          </div>
+        </section>
+
+        <section class="team-section section-wrap" id="team">
+          <div class="section-heading split-heading" data-reveal><div><div class="section-kicker">08 / PROJECT RECORD</div><h2>The people<br><span>behind the build.</span></h2></div><p>This website presents the project as submitted in the report: a Project Based Learning component of Machine Learning from the Department of Computer Science and Engineering.</p></div>
+          <div class="team-grid" data-reveal>
+            <article class="person-card"><div class="person-avatar">PM</div><div class="person-role">STUDENT / 01</div><h3>Priyadharshini M</h3><p>Submitted project team member</p><span>Computer Science and Engineering</span></article>
+            <article class="person-card"><div class="person-avatar avatar-green">DK</div><div class="person-role">STUDENT / 02</div><h3>Dallon Rufina Kennedy</h3><p>Submitted project team member</p><span>Computer Science and Engineering</span></article>
+            <article class="institution-card"><div class="institution-mark"><span>CIT</span><i></i></div><div class="person-role">INSTITUTION</div><h3>Chennai Institute of Technology</h3><p>Chennai / Autonomous</p><span>Affiliated to Anna University, Chennai</span></article>
+          </div>
+          <div class="academic-record" data-reveal><div><span>PROGRAMME</span><strong>Bachelor of Engineering</strong><small>Computer Science and Engineering</small></div><div><span>SUBMISSION</span><strong>Project Based Learning</strong><small>Machine Learning component</small></div><div><span>ACADEMIC YEAR</span><strong>2026 - 2027</strong><small>Report dated October 2026</small></div><div><span>HEAD OF DEPARTMENT</span><strong>Dr. S. Pavithra, M.E., Ph.D.</strong><small>Professor and Head, CSE</small></div></div>
+          <div class="institution-context" data-reveal><div><span class="section-kicker">INSTITUTE VISION</span><p>To be an eminent centre for Academia, Industry and Research by imparting knowledge, relevant practices and inculcating human values to address global challenges through novelty and sustainability.</p></div><div><span class="section-kicker">DEPARTMENT VISION</span><p>To excel in the emerging areas of Computer Science and Engineering by imparting knowledge, relevant practices and inculcating human values to transform students as potential resources to contribute innovatively through advanced computing in real time situations.</p></div></div>
         </section>
       </main>
 
-      <footer class="footer"><div class="page-width footer-top"><div class="footer-brand"><span class="brand-mark">LT</span><div><strong>LifeTwin AI</strong><small>Your day, seen together.</small></div></div><div class="footer-links"><a href="#twin">Build my twin</a><a href="#how">How it works</a><a href="#about">About</a></div><span class="footer-note">Student-built product demo</span></div><div class="page-width footer-bottom"><span>LifeTwin AI</span><span>Made for everyday decisions</span><a href="#top">Back to top ↑</a></div></footer>
+      <footer class="site-footer"><div class="section-wrap footer-main"><div class="footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><b></b><em></em></span><div><strong>Silent Speech Recognition</strong><small>Project Based Learning / Machine Learning</small></div></div><div class="footer-meta"><span>Chennai Institute of Technology</span><span>Department of Computer Science and Engineering</span><span>October 2026</span></div><a class="back-top" href="#top">Back to top <span>^</span></a></div><div class="section-wrap footer-bottom"><span>Report-grounded project presentation</span><span>No measured results supplied</span></div></footer>
     </div>
-    <button class="back-top" type="button" aria-label="Back to top">↑</button>
+    <button class="floating-top" id="floating-top" type="button" aria-label="Back to top">^</button>
+    <noscript><div class="noscript-note">This project presentation needs JavaScript for the interactive camera and upload lab. The report content remains available in the page.</div></noscript>
     <script src="script.js"></script>
   </body>
 </html>
